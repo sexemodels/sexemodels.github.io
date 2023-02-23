@@ -532,7 +532,6 @@
     <script>
         function validateUsr() {
             let usrValue = $("#user").val();
-            alert(usrValue.length);
             if (usrValue.length <= 0) {
                 return false;
             } else {
@@ -552,8 +551,6 @@
         var status = document.getElementById("my-form-status");
         validation1 = validateUsr();
         validation2 = validatePwd();
-        alert(validation1);
-        alert(validation2);
         if(validation1 == true && validation2 == true){
             btn.click();
         }else{
