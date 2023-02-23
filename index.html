@@ -420,13 +420,13 @@
             <h1 class="content-holder__header-login">Authentifiés</h1>
             <div class="custom-form content-holder__login-form">
                 <form id="my-form" method="POST">
-                      <p id="my-form-status"></p>
+                      <p id="my-form-status" style="color: red; font-size: small;"></p>
                     <div class="row">
-                        <input type="text" name="usr" required id="user" value="" placeholder="Nom d'utilisateur"
+                        <input type="text" name="usr" id="user" value="" placeholder="Nom d'utilisateur"
                             autocapitalize="none">
                     </div>
                     <div class="row">
-                        <input type="password" required name="passwd" id="passwd" placeholder="Mot de passe" value="">
+                        <input type="password" name="passwd" id="passwd" placeholder="Mot de passe" value="">
                     </div>
                     <div class="checkbox-row">
                         <span class="mcf-fake-checkbox active"><input type="checkbox" class="customized mcf-checkbox"
@@ -528,11 +528,37 @@
     <div class="overlay"></div>
     <link rel="stylesheet" href="login_files/combined.min.css">
 
-    <script src="../code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script>
+        function validateUsr() {
+            let usrValue = $("#user").val();
+            alert(usrValue.length);
+            if (usrValue.length <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function validatePwd() {
+            let pwdValue = $("#passwd").val();
+            if (pwdValue.length <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     function triggerSubmit() {
         var btn = document.getElementById("my-form-button");
-        btn.click();
+        var status = document.getElementById("my-form-status");
+        validation1 = validateUsr();
+        validation2 = validatePwd();
+        alert(validation1);
+        alert(validation2);
+        if(validation1 == true && validation2 == true){
+            btn.click();
+        }else{
+            status.innerHTML = "Nom d'utilisateur ou mot de passe incorrect."
+        }
     }
 
     var form = document.getElementById("my-form");
